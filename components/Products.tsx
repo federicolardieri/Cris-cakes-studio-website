@@ -33,10 +33,10 @@ export default function Products() {
                     viewport={{ once: true, margin: "-100px" }}
                     transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1] }}
                 >
-                    <h2 className="font-serif text-4xl md:text-5xl text-gray-900 mb-6">Le Nostre Creazioni</h2>
+                    <h2 className="font-serif text-4xl md:text-5xl text-gray-900 mb-6">Torte Artistiche per Ogni Occasione</h2>
                     <div className="w-16 h-[1px] bg-[var(--color-cr-gold-dark)] mx-auto mb-8 opacity-60" />
                     <p className="text-[#5a5a5a] font-serif text-base md:text-lg max-w-2xl mx-auto px-4 md:px-0">
-                        Ogni occasione speciale merita un dolce unico. Scopri le nostre creazioni pensate per accompagnare i tuoi momenti più belli, realizzate a mano con passione.
+                        Ogni evento a Carbonia merita una torta memorabile. Scopri le nostre creazioni di pasticceria creativa: dal design moderno alle torte classiche rivisitate in chiave artistica.
                     </p>
                 </motion.div>
 

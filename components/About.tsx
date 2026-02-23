@@ -42,7 +42,7 @@ export default function About() {
                             viewport={{ once: true }}
                             transition={{ duration: 1.5, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
                         >
-                            <strong className="font-medium text-[var(--color-cr-gold-dark)]">Cris Cakes</strong> nasce a Carbonia dall&apos;amore incondizionato per la pasticceria artigianale e per i dettagli che fanno la differenza.
+                            <strong className="font-medium text-[var(--color-cr-gold-dark)]">Cris Cakes</strong> rappresenta l&apos;eccellenza delle <strong className="font-medium">torte personalizzate a Carbonia</strong>. Ogni nostra creazione nasce dalla passione per il cake design e per i dettagli raffinati.
                         </motion.p>
                         <motion.p
                             initial={{ opacity: 0, y: 20 }}
@@ -50,7 +50,7 @@ export default function About() {
                             viewport={{ once: true }}
                             transition={{ duration: 1.5, delay: 0.7, ease: [0.22, 1, 0.36, 1] }}
                         >
-                            Nel nostro laboratorio, ogni dolce racconta una storia. Selezioniamo meticolosamente ingredienti di altissima qualità per creare torte che non siano solo bellissime da vedere, ma capaci di regalare un&apos;esperienza di gusto indimenticabile per i tuoi eventi in tutto il Sulcis.
+                            Specializzati in torte artistiche per ogni occasione, selezioniamo solo ingredienti premium per garantire un gusto autentico. Siamo il punto di riferimento per chi cerca una <strong className="font-medium">pasticceria artigianale a Carbonia</strong> capace di emozionare.
                         </motion.p>
                         <motion.p
                             initial={{ opacity: 0, y: 20 }}
@@ -58,7 +58,7 @@ export default function About() {
                             viewport={{ once: true }}
                             transition={{ duration: 1.5, delay: 0.9, ease: [0.22, 1, 0.36, 1] }}
                         >
-                            Non crediamo nei compromessi: dedichiamo a ogni singola creazione il tempo e la cura necessari affinché il risultato finale sia sempre un&apos;opera d&apos;arte unica, pensata esclusivamente per te e per la tua occasione speciale.
+                            Dalla progettazione estetica alla realizzazione finale, curiamo ogni aspetto affinché la tua torta sia la protagonista indiscussa del tuo evento speciale nel Sulcis Iglesiente.
                         </motion.p>
                     </div>
 

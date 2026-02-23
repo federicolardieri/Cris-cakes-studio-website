@@ -32,7 +32,7 @@ export default function Hero() {
                         transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1] }}
                     >
                         <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-medium text-[var(--color-cr-gold-dark)] mb-4 tracking-wide leading-tight">
-                            Torte artigianali personalizzate a Carbonia
+                            Torte Personalizzate e Cake Design a Carbonia
                         </h1>
                     </motion.div>
 
@@ -50,7 +50,7 @@ export default function Hero() {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 1.5, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
                     >
-                        Cake design per compleanni, anniversari, battesimi ed eventi speciali in tutto il Sulcis.
+                        Cris Cakes è il tuo studio creativo per torte artigianali indimenticabili. Esperti in cake design per ogni evento nel Sulcis Iglesiente.
                     </motion.p>
 
                     <motion.p

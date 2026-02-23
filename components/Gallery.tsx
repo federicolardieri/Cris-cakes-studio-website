@@ -46,18 +46,20 @@ export default function Gallery() {
                         </p>
                     </div>
 
-                    <div className="hidden md:flex gap-4">
+                    <div className="flex gap-4">
                         <button
                             onClick={() => scroll('left')}
-                            className="w-12 h-12 rounded-full border border-[var(--color-cr-gold)] flex items-center justify-center text-[var(--color-cr-gold-dark)] hover:bg-[var(--color-cr-gold)] hover:text-white transition-all duration-300"
+                            className="w-10 h-10 md:w-12 md:h-12 rounded-full border border-[var(--color-cr-gold)] flex items-center justify-center text-[var(--color-cr-gold-dark)] hover:bg-[var(--color-cr-gold)] hover:text-white transition-all duration-300 bg-white/50 backdrop-blur-sm"
+                            aria-label="Precedente"
                         >
-                            <ChevronLeft strokeWidth={1.5} />
+                            <ChevronLeft size={20} strokeWidth={1.5} />
                         </button>
                         <button
                             onClick={() => scroll('right')}
-                            className="w-12 h-12 rounded-full border border-[var(--color-cr-gold)] flex items-center justify-center text-[var(--color-cr-gold-dark)] hover:bg-[var(--color-cr-gold)] hover:text-white transition-all duration-300"
+                            className="w-10 h-10 md:w-12 md:h-12 rounded-full border border-[var(--color-cr-gold)] flex items-center justify-center text-[var(--color-cr-gold-dark)] hover:bg-[var(--color-cr-gold)] hover:text-white transition-all duration-300 bg-white/50 backdrop-blur-sm"
+                            aria-label="Successivo"
                         >
-                            <ChevronRight strokeWidth={1.5} />
+                            <ChevronRight size={20} strokeWidth={1.5} />
                         </button>
                     </div>
                 </motion.div>
@@ -131,6 +133,18 @@ export default function Gallery() {
 
                     </div>
                 </div>
+
+                {/* Mobile Hint: Swipe to Explore */}
+                <motion.div
+                    className="flex md:hidden items-center justify-center gap-2 mt-4 text-[var(--color-cr-gold-dark)] opacity-60 text-xs tracking-widest uppercase font-medium"
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 0.6 }}
+                    viewport={{ once: true }}
+                >
+                    <ChevronLeft size={14} />
+                    <span>Scorri per esplorare</span>
+                    <ChevronRight size={14} />
+                </motion.div>
 
                 <motion.div
                     className="mt-12 text-center"

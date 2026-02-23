@@ -14,15 +14,33 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "Torte personalizzate a Carbonia | Cris Cakes Cake Studio",
-  description: "Realizziamo torte artigianali personalizzate per compleanni, eventi e battesimi a Carbonia. Contattaci per un preventivo su misura.",
+  title: "Torte Personalizzate Carbonia | Cris Cakes Cake Studio",
+  description: "Il miglior Cake Studio per torte artigianali e personalizzate a Carbonia. Creazioni uniche per compleanni, battesimi ed eventi speciali nel Sulcis. Prenota la tua torta su misura.",
+  keywords: ["torte carbonia", "cake design carbonia", "torte personalizzate carbonia", "pasticceria carbonia", "torte compleanno carbonia", "torte battesimo carbonia", "cake studio sardegna"],
+  authors: [{ name: "Cris Cakes" }],
   openGraph: {
-    title: "Torte personalizzate a Carbonia | Cris Cakes Cake Studio",
-    description: "Realizziamo torte artigianali personalizzate per compleanni, eventi e battesimi a Carbonia. Contattaci per un preventivo su misura.",
-    type: "website",
-    locale: "it_IT",
+    title: "Torte Personalizzate Carbonia | Cris Cakes Cake Studio",
+    description: "Realizziamo torte artigianali uniche a Carbonia. Scopri le nostre creazioni per ogni occasione speciale.",
+    url: "https://criscakes.it", // Assunto, aggiornare se necessario
     siteName: "Cris Cakes Cake Studio",
-  }
+    images: [
+      {
+        url: "/images/media__1771871540600.jpg", // Immagine rappresentativa
+        width: 1200,
+        height: 630,
+        alt: "Torte artigianali Cris Cakes Carbonia",
+      },
+    ],
+    locale: "it_IT",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Torte Personalizzate Carbonia | Cris Cakes Cake Studio",
+    description: "Torte artigianali e cake design per i tuoi eventi a Carbonia.",
+    images: ["/images/media__1771871540600.jpg"],
+  },
+  robots: "index, follow",
 };
 
 export default function RootLayout({
@@ -35,25 +53,36 @@ export default function RootLayout({
     "@context": "https://schema.org",
     "@type": "Bakery",
     "name": "Cris Cakes Cake Studio",
-    "description": "Cake studio artigianale specializzato in torte personalizzate, cake design, torte per compleanni, battesimi ed eventi a Carbonia e in tutto il Sulcis.",
-    "telephone": "+390000000000", /* Segnaposto, aggiornare con numero effettivo */
+    "image": "https://criscakes.it/images/media__1771871540600.jpg", // Update with absolute URL
+    "@id": "https://criscakes.it",
+    "url": "https://criscakes.it",
+    "telephone": "+393454168350",
+    "priceRange": "€€",
     "address": {
       "@type": "PostalAddress",
+      "streetAddress": "Via Gramsci", // Esempio, completa se noto
       "addressLocality": "Carbonia",
+      "postalCode": "09013",
       "addressRegion": "SU",
       "addressCountry": "IT"
     },
-    "areaServed": {
-      "@type": "GeoCircle",
-      "geoMidpoint": {
-        "@type": "GeoCoordinates",
-        "latitude": 39.1672,
-        "longitude": 8.5222
-      },
-      "geoRadius": "50000" /* 50km raggio */
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 39.1672,
+      "longitude": 8.5222
     },
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+        "opens": "09:00",
+        "closes": "19:00"
+      }
+    ],
+    "areaServed": "Carbonia e Sulcis Iglesiente",
+    "description": "Cake studio artigianale specializzato in torte personalizzate, cake design, torte per compleanni, battesimi ed eventi a Carbonia e in tutto il Sulcis.",
     "sameAs": [
-      "https://www.instagram.com/criscakes_" /* Inserire IG effettivo se noto */
+      "https://www.instagram.com/criscakes_"
     ]
   };
 

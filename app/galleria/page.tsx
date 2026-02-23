@@ -6,6 +6,13 @@ import { X } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+    title: "Galleria Torte Artigianali | Cris Cakes Carbonia",
+    description: "Sfoglia la nostra galleria di torte personalizzate e creazioni di cake design a Carbonia. Lasciati ispirare per il tuo prossimo evento speciale.",
+    keywords: ["foto torte carbonia", "gallery cake design sardegna", "immagini torte compleanno", "torte artistiche sulcis"],
+};
 
 const allGalleryImages = [
     { src: "/video-bg.mp4", alt: "Creazione Torta Artigianale Carbonia" },
