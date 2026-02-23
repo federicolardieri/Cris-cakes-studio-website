@@ -29,7 +29,14 @@ export default function Contact() {
                             <Phone className="text-[var(--color-cr-gold-dark)] flex-shrink-0 group-hover:scale-110 transition-transform duration-500" size={20} />
                             <span className="text-sm sm:text-base">345 416 8350 <span className="text-xs sm:text-sm text-gray-400 ml-1 sm:ml-2 group-hover:text-[var(--color-cr-gold)]/70 transition-colors">(WhatsApp)</span></span>
                         </a>
-                        <div className="flex items-center gap-4 hover:text-[var(--color-cr-gold)] transition-colors duration-500 group">
+                        <a href="tel:+393454168350" className="flex items-center gap-4 p-4 border border-[var(--color-cr-gold)]/20 rounded-sm hover:bg-[var(--color-cr-gold)] hover:text-white hover:border-transparent transition-all duration-500 group">
+                            <Phone className="text-[var(--color-cr-gold-dark)] flex-shrink-0 group-hover:scale-110 group-hover:text-white transition-all duration-500" size={20} />
+                            <div className="flex flex-col">
+                                <span className="text-sm sm:text-base font-medium">Chiama Ora</span>
+                                <span className="text-xs sm:text-sm opacity-70">345 416 8350 (Cellulare)</span>
+                            </div>
+                        </a>
+                        <div className="flex items-center gap-4 px-4 py-2 hover:text-[var(--color-cr-gold)] transition-colors duration-500 group">
                             <Phone className="text-[var(--color-cr-gold-dark)] flex-shrink-0 group-hover:scale-110 transition-transform duration-500" size={20} />
                             <span className="text-sm sm:text-base">0781 64469 <span className="text-xs sm:text-sm text-gray-400 ml-1 sm:ml-2 transition-colors">(Fisso)</span></span>
                         </div>

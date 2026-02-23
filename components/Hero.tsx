@@ -79,10 +79,13 @@ export default function Hero() {
                         initial={{ opacity: 0, scale: 0.95 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 1.2, delay: 1 }}
-                        className="w-full sm:w-auto"
+                        className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto"
                     >
                         <a href="#contatti" className="block w-full text-center sm:inline-block sm:w-auto px-8 sm:px-10 py-4 bg-[var(--color-cr-gold)] text-white uppercase tracking-widest text-sm font-medium hover:bg-[var(--color-cr-gold-dark)] transition-all duration-500 hover:shadow-xl hover:-translate-y-1">
                             Richiedi Preventivo
+                        </a>
+                        <a href="tel:+393454168350" className="block w-full text-center sm:inline-block sm:w-auto px-8 sm:px-10 py-4 border border-[var(--color-cr-gold)] text-[var(--color-cr-gold-dark)] bg-white/50 backdrop-blur-sm uppercase tracking-widest text-sm font-medium hover:bg-[var(--color-cr-gold)] hover:text-white transition-all duration-500 hover:shadow-xl hover:-translate-y-1">
+                            Chiama Ora
                         </a>
                     </motion.div>
 

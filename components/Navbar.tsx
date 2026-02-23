@@ -93,14 +93,22 @@ export default function Navbar() {
                                     {link.name}
                                 </Link>
                             ))}
-                            <a
-                                href="https://wa.me/393454168350"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="mt-4 px-10 py-4 bg-[var(--color-cr-gold)] text-white hover:bg-[var(--color-cr-gold-dark)] transition-colors rounded-sm shadow-md"
-                            >
-                                Richiedi Preventivo
-                            </a>
+                            <div className="flex flex-col gap-4 w-full px-10 mt-4">
+                                <a
+                                    href="https://wa.me/393454168350"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="w-full text-center px-6 py-4 bg-[var(--color-cr-gold)] text-white hover:bg-[var(--color-cr-gold-dark)] transition-colors rounded-sm shadow-md"
+                                >
+                                    Richiedi Preventivo
+                                </a>
+                                <a
+                                    href="tel:+393454168350"
+                                    className="w-full text-center px-6 py-4 border border-[var(--color-cr-gold)] text-[var(--color-cr-gold-dark)] hover:bg-[var(--color-cr-gold)] hover:text-white transition-colors rounded-sm"
+                                >
+                                    Chiama Ora
+                                </a>
+                            </div>
                         </nav>
                     </motion.div>
                 )}
