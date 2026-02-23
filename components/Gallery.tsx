@@ -9,11 +9,11 @@ import { X, ChevronRight, ChevronLeft } from "lucide-react";
 // Simulated image list. In a real scenario this might come from a CMS or folder.
 const galleryImages = [
     { src: "/video-bg.mp4", alt: "Video Creazione Torta Artigianale" },
-    { src: "/images/media__1771871540600.jpg", alt: "Torta Compleanno Pietro Viola Fabry personalizzata Carbonia" },
-    { src: "/images/media__1771871540566.jpg", alt: "Torta Minnie Mouse cake design Carbonia" },
-    { src: "/images/media__1771871540618.jpg", alt: "Torta Leopardata eventi speciali Sulcis" },
-    { src: "/images/media__1771871540580.jpg", alt: "Torta Cuore Leopardato artigianale Sardegna" },
-    { src: "/images/media__1771871540641.jpg", alt: "Torta Battesimo elegante Carbonia" },
+    { src: "/images/media__1771871540600.avif", alt: "Torta Compleanno Pietro Viola Fabry personalizzata Carbonia" },
+    { src: "/images/media__1771871540566.avif", alt: "Torta Minnie Mouse cake design Carbonia" },
+    { src: "/images/media__1771871540618.avif", alt: "Torta Leopardata eventi speciali Sulcis" },
+    { src: "/images/media__1771871540580.avif", alt: "Torta Cuore Leopardato artigianale Sardegna" },
+    { src: "/images/media__1771871540641.avif", alt: "Torta Battesimo elegante Carbonia" },
 ];
 
 export default function Gallery() {
@@ -132,14 +132,14 @@ export default function Gallery() {
                     <button
                         onClick={() => scroll('left')}
                         className="w-12 h-12 md:w-14 md:h-14 rounded-full border border-[var(--color-cr-gold)] flex items-center justify-center text-[var(--color-cr-gold-dark)] hover:bg-[var(--color-cr-gold)] hover:text-white transition-all duration-500 bg-white/80 backdrop-blur-sm shadow-md hover:shadow-lg group"
-                        aria-label="Precedente"
+                        aria-label="Scorri a sinistra le creazioni"
                     >
                         <ChevronLeft size={24} strokeWidth={1.5} className="group-hover:-translate-x-0.5 transition-transform" />
                     </button>
                     <button
                         onClick={() => scroll('right')}
                         className="w-12 h-12 md:w-14 md:h-14 rounded-full border border-[var(--color-cr-gold)] flex items-center justify-center text-[var(--color-cr-gold-dark)] hover:bg-[var(--color-cr-gold)] hover:text-white transition-all duration-500 bg-white/80 backdrop-blur-sm shadow-md hover:shadow-lg group"
-                        aria-label="Successivo"
+                        aria-label="Scorri a destra le creazioni"
                     >
                         <ChevronRight size={24} strokeWidth={1.5} className="group-hover:translate-x-0.5 transition-transform" />
                     </button>

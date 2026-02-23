@@ -16,10 +16,11 @@ export default function About() {
                 >
                     <div className="absolute inset-0 rounded-sm shadow-2xl overflow-hidden">
                         <Image
-                            src="/images/media__1771871540641.jpg"
+                            src="/images/media__1771871540641.avif"
                             alt="Laboratorio artigianale di cake design a Carbonia"
                             fill
                             className="object-cover transition-transform duration-[20s] hover:scale-105"
+                            priority
                             sizes="(max-w-768px) 100vw, 50vw"
                         />
                     </div>

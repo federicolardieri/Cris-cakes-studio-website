@@ -6,19 +6,22 @@ import Image from "next/image";
 const categories = [
     {
         title: "Battesimi & Nascite",
-        image: "/images/media__1771871540641.jpg"
+        image: "/images/media__1771871540641.avif"
     },
     {
-        title: "Compleanni Bimbi",
-        image: "/images/media__1771871540566.jpg"
+        title: "Compleanni & Cerimonie",
+        description: "Torte scenografiche per rendere indimenticabile ogni traguardo importante.",
+        image: "/images/media__1771871540566.avif"
     },
     {
-        title: "Feste a Tema",
-        image: "/images/media__1771871540618.jpg"
+        title: "Eventi Aziendali",
+        description: "Creazioni professionali ed eleganti per inaugurazioni e cene di gala.",
+        image: "/images/media__1771871540618.avif"
     },
     {
-        title: "Anniversari & Cuori",
-        image: "/images/media__1771871540580.jpg"
+        title: "Sweet Tables",
+        description: "Un'esplosione di dolcezza coordinata con il tema della tua festa.",
+        image: "/images/media__1771871540580.avif"
     }
 ];
 

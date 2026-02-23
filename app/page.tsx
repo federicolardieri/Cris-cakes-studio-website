@@ -1,13 +1,16 @@
+import dynamic from "next/dynamic";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
 import Products from "@/components/Products";
-import Gallery from "@/components/Gallery";
-import WhyUs from "@/components/WhyUs";
-import HowItWorks from "@/components/HowItWorks";
-import Contact from "@/components/Contact";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
 import Footer from "@/components/Footer";
+
+// Caricamento dinamico delle sezioni pesanti o sotto la piega
+const Gallery = dynamic(() => import("@/components/Gallery"), { ssr: true });
+const WhyUs = dynamic(() => import("@/components/WhyUs"), { ssr: true });
+const HowItWorks = dynamic(() => import("@/components/HowItWorks"), { ssr: true });
+const Contact = dynamic(() => import("@/components/Contact"), { ssr: true });
 
 export default function Home() {
   return (

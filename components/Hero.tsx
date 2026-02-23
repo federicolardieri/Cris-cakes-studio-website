@@ -12,6 +12,8 @@ export default function Hero() {
                 loop
                 muted
                 playsInline
+                preload="metadata"
+                poster="/images/media__1771871540600.avif"
                 className="absolute inset-0 z-0 w-full h-full object-cover scale-[1.02] opacity-15 pointer-events-none"
             >
                 <source src="/video-bg.mp4" type="video/mp4" />

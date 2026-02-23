@@ -41,7 +41,7 @@ export default function Navbar() {
                 <button
                     className="md:hidden text-[var(--color-cr-gold-dark)] hover:text-[var(--color-cr-gold)] transition-colors p-2"
                     onClick={toggleMenu}
-                    aria-label="Toggle menu"
+                    aria-label={isOpen ? "Chiudi menù di navigazione" : "Apri menù di navigazione"}
                 >
                     {isOpen ? <X size={28} strokeWidth={1.5} /> : <Menu size={28} strokeWidth={1.5} />}
                 </button>
