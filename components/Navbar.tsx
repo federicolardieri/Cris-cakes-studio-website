@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 
 export default function Navbar() {
@@ -27,20 +27,20 @@ export default function Navbar() {
 
                 {/* Navigation Links - Left */}
                 <nav className="hidden md:flex gap-8 text-sm font-medium tracking-widest uppercase">
-                    <a href="/#contatti" className="hover:text-[var(--color-cr-gold)] transition-colors">Contattaci</a>
-                    <a href="/#le-nostre-torte" className="hover:text-[var(--color-cr-gold)] transition-colors">Creazioni</a>
+                    <Link href="/#contatti" className="hover:text-[var(--color-cr-gold)] transition-colors">Contattaci</Link>
+                    <Link href="/#le-nostre-torte" className="hover:text-[var(--color-cr-gold)] transition-colors">Creazioni</Link>
                 </nav>
 
                 {/* Logo - Center/Left on mobile */}
-                <a href="/" className="md:absolute md:left-1/2 md:-translate-x-1/2 flex flex-col items-center">
+                <Link href="/" className="md:absolute md:left-1/2 md:-translate-x-1/2 flex flex-col items-center">
                     <span className="font-serif text-[1.35rem] sm:text-2xl md:text-3xl lg:text-4xl text-[var(--color-cr-gold-dark)] tracking-[0.2em] uppercase whitespace-nowrap">
                         Cris Cakes
                     </span>
-                </a>
+                </Link>
 
                 {/* Navigation Links - Right */}
                 <nav className="flex gap-6 md:gap-8 items-center text-sm font-medium tracking-widest uppercase ml-auto">
-                    <a href="/galleria" className="hidden md:block hover:text-[var(--color-cr-gold)] transition-colors">Galleria</a>
+                    <Link href="/galleria" className="hidden md:block hover:text-[var(--color-cr-gold)] transition-colors">Galleria</Link>
                     <a href="https://wa.me/393454168350" target="_blank" rel="noopener noreferrer" className="px-5 py-2.5 bg-[var(--color-cr-gold)] text-white hover:bg-[var(--color-cr-gold-dark)] transition-colors rounded-sm shadow-sm hover:shadow-md">
                         Preventivo
                     </a>

@@ -1,7 +1,6 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import Image from "next/image";
 import { useState } from "react";
 import { X } from "lucide-react";
 import Navbar from "@/components/Navbar";
