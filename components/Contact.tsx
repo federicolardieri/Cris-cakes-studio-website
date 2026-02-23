@@ -27,7 +27,7 @@ export default function Contact() {
                     <div className="space-y-6 text-[#5a5a5a] font-light pt-4 border-t border-[var(--color-cr-background)] w-full md:w-3/4">
                         <a href="https://wa.me/393454168350" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 hover:text-[var(--color-cr-gold)] transition-colors duration-500 group">
                             <Phone className="text-[var(--color-cr-gold-dark)] flex-shrink-0 group-hover:scale-110 transition-transform duration-500" size={20} />
-                            <span className="text-sm sm:text-base">+39 345 416 8350 <span className="text-xs sm:text-sm text-gray-400 ml-1 sm:ml-2 group-hover:text-[var(--color-cr-gold)]/70 transition-colors">(WhatsApp)</span></span>
+                            <span className="text-sm sm:text-base">345 416 8350 <span className="text-xs sm:text-sm text-gray-400 ml-1 sm:ml-2 group-hover:text-[var(--color-cr-gold)]/70 transition-colors">(WhatsApp)</span></span>
                         </a>
                         <div className="flex items-center gap-4 hover:text-[var(--color-cr-gold)] transition-colors duration-500 group">
                             <Phone className="text-[var(--color-cr-gold-dark)] flex-shrink-0 group-hover:scale-110 transition-transform duration-500" size={20} />

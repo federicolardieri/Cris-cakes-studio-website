@@ -22,8 +22,17 @@ export default function Gallery() {
 
     const scroll = (direction: 'left' | 'right') => {
         if (scrollContainerRef.current) {
-            const scrollAmount = direction === 'left' ? -400 : 400;
-            scrollContainerRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+            const container = scrollContainerRef.current;
+            const firstItem = container.firstElementChild as HTMLElement;
+            if (firstItem) {
+                // Get the total width of one item including the gap
+                const itemWidth = firstItem.offsetWidth;
+                const gap = 32; // This matches the 'gap-8' (8 * 4px) class on the container
+                const scrollDistance = itemWidth + gap;
+
+                const scrollAmount = direction === 'left' ? -scrollDistance : scrollDistance;
+                container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+            }
         }
     };
 
