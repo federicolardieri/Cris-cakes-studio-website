@@ -1,0 +1,53 @@
+@import "tailwindcss";
+
+/* stylelint-disable-next-line css-ruleorselectorexpected */
+
+@theme inline {
+  --color-cr-gold: #B69768;
+  /* Updated to match the logo gold */
+  --color-cr-gold-dark: #9F8257;
+  --color-cr-background: #F4EFEA;
+  /* Light beige plaster/paper texture color */
+  --color-cr-text: #4A4A4A;
+  /* Soft dark grey for text */
+
+  --font-serif: var(--font-playfair);
+  --font-sans: var(--font-poppins);
+
+  --animate-pulse-slow: pulse-slow 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse-slow {
+
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: .85;
+    transform: scale(1.05);
+  }
+}
+
+:root {
+  --background: var(--color-cr-background);
+  --foreground: var(--color-cr-text);
+}
+
+/* Force light mode to preserve the flyer aesthetic */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: var(--color-cr-background);
+    --foreground: var(--color-cr-text);
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), sans-serif;
+  overflow-x: hidden;
+  /* Optional: a very subtle texture if desired, currently using solid light beige */
+}
