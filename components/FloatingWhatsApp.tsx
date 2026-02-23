@@ -28,7 +28,7 @@ export default function FloatingWhatsApp() {
             transition={{ duration: 0.3 }}
         >
             <a
-                href="https://wa.me/391234567890" // Sostituisci questo con il numero REALE
+                href="https://wa.me/393454168350"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-center w-14 h-14 bg-[#25D366] text-white rounded-full shadow-[0_4px_12px_rgba(0,0,0,0.15)] hover:shadow-[0_6px_16px_rgba(37,211,102,0.4)] hover:-translate-y-1 transition-all duration-300 animate-pulse-slow"

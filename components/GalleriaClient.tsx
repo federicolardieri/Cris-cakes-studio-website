@@ -20,7 +20,7 @@ export default function GalleriaClient({ images }: GalleriaClientProps) {
     const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
     return (
-        <main className="relative min-h-screen bg-[var(--color-cr-background)] text-[var(--color-cr-text)] selection:bg-[var(--color-cr-gold)] selection:text-white">
+        <main className="relative min-h-screen bg-[var(--color-cr-background)] text-[var(--color-cr-text)] selection:bg-[var(--color-cr-gold)] selection:text-white overflow-x-hidden">
             {/* Video Background Globale per la Galleria */}
             <div className="fixed inset-0 z-0 w-full h-full pointer-events-none">
                 <video

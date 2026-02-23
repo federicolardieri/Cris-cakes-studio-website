@@ -46,22 +46,6 @@ export default function Gallery() {
                         </p>
                     </div>
 
-                    <div className="flex gap-4">
-                        <button
-                            onClick={() => scroll('left')}
-                            className="w-10 h-10 md:w-12 md:h-12 rounded-full border border-[var(--color-cr-gold)] flex items-center justify-center text-[var(--color-cr-gold-dark)] hover:bg-[var(--color-cr-gold)] hover:text-white transition-all duration-300 bg-white/50 backdrop-blur-sm"
-                            aria-label="Precedente"
-                        >
-                            <ChevronLeft size={20} strokeWidth={1.5} />
-                        </button>
-                        <button
-                            onClick={() => scroll('right')}
-                            className="w-10 h-10 md:w-12 md:h-12 rounded-full border border-[var(--color-cr-gold)] flex items-center justify-center text-[var(--color-cr-gold-dark)] hover:bg-[var(--color-cr-gold)] hover:text-white transition-all duration-300 bg-white/50 backdrop-blur-sm"
-                            aria-label="Successivo"
-                        >
-                            <ChevronRight size={20} strokeWidth={1.5} />
-                        </button>
-                    </div>
                 </motion.div>
 
                 {/* Carousel Container */}
@@ -134,16 +118,34 @@ export default function Gallery() {
                     </div>
                 </div>
 
+                {/* Carousel Navigation Buttons Below */}
+                <div className="flex justify-center gap-6 mt-10 md:mt-12">
+                    <button
+                        onClick={() => scroll('left')}
+                        className="w-12 h-12 md:w-14 md:h-14 rounded-full border border-[var(--color-cr-gold)] flex items-center justify-center text-[var(--color-cr-gold-dark)] hover:bg-[var(--color-cr-gold)] hover:text-white transition-all duration-500 bg-white/80 backdrop-blur-sm shadow-md hover:shadow-lg group"
+                        aria-label="Precedente"
+                    >
+                        <ChevronLeft size={24} strokeWidth={1.5} className="group-hover:-translate-x-0.5 transition-transform" />
+                    </button>
+                    <button
+                        onClick={() => scroll('right')}
+                        className="w-12 h-12 md:w-14 md:h-14 rounded-full border border-[var(--color-cr-gold)] flex items-center justify-center text-[var(--color-cr-gold-dark)] hover:bg-[var(--color-cr-gold)] hover:text-white transition-all duration-500 bg-white/80 backdrop-blur-sm shadow-md hover:shadow-lg group"
+                        aria-label="Successivo"
+                    >
+                        <ChevronRight size={24} strokeWidth={1.5} className="group-hover:translate-x-0.5 transition-transform" />
+                    </button>
+                </div>
+
                 {/* Mobile Hint: Swipe to Explore */}
                 <motion.div
-                    className="flex md:hidden items-center justify-center gap-2 mt-4 text-[var(--color-cr-gold-dark)] opacity-60 text-xs tracking-widest uppercase font-medium"
+                    className="flex md:hidden items-center justify-center gap-2 mt-6 text-[var(--color-cr-gold-dark)] opacity-40 text-[10px] tracking-[0.2em] uppercase font-medium"
                     initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 0.6 }}
+                    whileInView={{ opacity: 0.4 }}
                     viewport={{ once: true }}
                 >
-                    <ChevronLeft size={14} />
+                    <ChevronLeft size={12} />
                     <span>Scorri per esplorare</span>
-                    <ChevronRight size={14} />
+                    <ChevronRight size={12} />
                 </motion.div>
 
                 <motion.div

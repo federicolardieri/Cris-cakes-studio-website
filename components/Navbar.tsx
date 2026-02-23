@@ -58,7 +58,7 @@ export default function Navbar() {
                     onClick={closeMenu}
                     className="absolute left-1/2 -translate-x-1/2 flex flex-col items-center"
                 >
-                    <span className="font-serif text-[1.4rem] sm:text-2xl md:text-3xl lg:text-4xl text-[var(--color-cr-gold-dark)] tracking-[0.2em] uppercase whitespace-nowrap">
+                    <span className="font-serif text-[1.2rem] sm:text-2xl md:text-3xl lg:text-4xl text-[var(--color-cr-gold-dark)] tracking-[0.2em] uppercase whitespace-nowrap">
                         Cris Cakes
                     </span>
                 </Link>
