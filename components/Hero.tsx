@@ -1,23 +1,29 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 export default function Hero() {
     return (
         <section className="relative min-h-[70vh] md:min-h-[85vh] w-full flex flex-col items-center pt-32 pb-16 px-6 overflow-hidden bg-[var(--color-cr-background)] text-[var(--color-cr-text)]">
 
-            {/* Video Background */}
+            {/* Video Background – desktop only, risparmia banda su mobile */}
             <video
                 autoPlay
                 loop
                 muted
                 playsInline
-                preload="metadata"
+                preload="none"
                 poster="/images/media__1771871540600.avif"
-                className="absolute inset-0 z-0 w-full h-full object-cover scale-[1.02] opacity-15 pointer-events-none"
+                className="hidden md:block absolute inset-0 z-0 w-full h-full object-cover scale-[1.02] opacity-15 pointer-events-none"
             >
                 <source src="/video-bg.mp4" type="video/mp4" />
             </video>
+            {/* Mobile: immagine statica al posto del video */}
+            <div
+                className="md:hidden absolute inset-0 z-0 opacity-10 pointer-events-none bg-cover bg-center scale-[1.02]"
+                style={{ backgroundImage: "url('/images/media__1771871540600.avif')" }}
+            />
 
             {/* Texture Overlay */}
             <div className="absolute inset-0 z-0 opacity-40 pointer-events-none mix-blend-multiply"
@@ -93,20 +99,31 @@ export default function Hero() {
 
                 {/* Right Image Content */}
                 <motion.div
-                    className="w-full md:w-1/2 relative h-[300px] sm:h-[400px] md:h-[600px] flex items-center justify-center mt-10 md:mt-0"
+                    className="w-full md:w-1/2 relative flex items-center justify-center mt-10 md:mt-0 pb-6"
                     initial={{ opacity: 0, filter: "blur(10px)", y: 50 }}
                     animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
                     transition={{ duration: 1.8, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
                 >
-                    <div className="relative w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 rounded-full border border-[var(--color-cr-gold)]/40 flex items-center justify-center bg-white/50 backdrop-blur-md shadow-2xl transition-transform duration-[10s] ease-linear hover:scale-105">
-                        <div className="absolute inset-2 md:inset-4 rounded-full border border-[var(--color-cr-gold-dark)]/10" />
-                        <div className="relative w-full h-full p-6 md:p-12 flex flex-col items-center justify-center text-center">
-                            <span className="font-serif text-2xl sm:text-3xl md:text-5xl text-[var(--color-cr-gold-dark)] tracking-[0.15em] uppercase leading-none mb-4">
-                                Cris Cakes
-                            </span>
-                            <div className="w-3/4 h-[1px] bg-[var(--color-cr-gold)] opacity-70 mb-4" />
-                            <span className="font-sans text-xs sm:text-sm md:text-base text-[#5a5a5a] tracking-[0.3em] uppercase font-light">
-                                Cake Studio
+                    <div className="relative">
+                        {/* Cornice decorativa offset */}
+                        <div className="absolute inset-0 translate-x-3 translate-y-3 md:translate-x-5 md:translate-y-5 border border-[var(--color-cr-gold)]/40" />
+                        {/* Foto torta */}
+                        <div className="relative w-[200px] sm:w-[260px] md:w-[340px] h-[260px] sm:h-[330px] md:h-[430px] overflow-hidden shadow-2xl">
+                            <Image
+                                src="/images/86643b3c-c45f-4970-a495-01b23a369320.JPG"
+                                alt="Torta compleanno artigianale con rose rosse e farfalla – Cris Cakes Carbonia"
+                                fill
+                                className="object-cover"
+                                priority
+                                sizes="(max-width: 640px) 200px, (max-width: 768px) 260px, 340px"
+                            />
+                            {/* Vignettatura oro sottile */}
+                            <div className="absolute inset-0 shadow-[inset_0_0_50px_rgba(182,151,104,0.12)]" />
+                        </div>
+                        {/* Label in basso */}
+                        <div className="absolute -bottom-5 left-0 right-0 flex justify-center">
+                            <span className="bg-[var(--color-cr-background)] px-4 py-1 font-sans text-[9px] sm:text-[10px] tracking-[0.3em] uppercase text-[var(--color-cr-gold-dark)] border-b border-[var(--color-cr-gold)]/40">
+                                Creazione Artigianale
                             </span>
                         </div>
                     </div>
