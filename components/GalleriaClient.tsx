@@ -55,15 +55,15 @@ export default function GalleriaClient({ images }: GalleriaClientProps) {
                     </motion.div>
 
                     {/* Masonry CSS Layout */}
-                    <div className="columns-1 sm:columns-2 md:columns-3 gap-6 space-y-6">
+                    <div className="columns-1 sm:columns-2 md:columns-3 gap-6">
                         {images.map((img, index) => (
                             <motion.div
                                 key={index}
-                                className="relative group overflow-hidden bg-white/50 rounded-sm cursor-pointer shadow-md inline-block w-full"
+                                className="relative group overflow-hidden bg-white/50 rounded-sm cursor-pointer shadow-md inline-block w-full mb-6"
                                 style={{ breakInside: 'avoid' }}
-                                initial={{ opacity: 0, filter: "blur(5px)" }}
-                                animate={{ opacity: 1, filter: "blur(0px)" }}
-                                transition={{ duration: 1.2, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                transition={{ duration: 0.8, delay: index * 0.08, ease: [0.22, 1, 0.36, 1] }}
                                 onClick={() => setSelectedImage(img.src)}
                             >
                                 {img.src.endsWith('.mp4') ? (
