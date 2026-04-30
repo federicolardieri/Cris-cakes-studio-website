@@ -56,11 +56,11 @@ export default function RootLayout({
     "image": "https://criscakes.it/images/media__1771871540600.avif", // Update with absolute URL
     "@id": "https://criscakes.it",
     "url": "https://criscakes.it",
-    "telephone": "+393454168350",
+    "telephone": "+393484223249",
     "priceRange": "€€",
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": "Via Gramsci", // Esempio, completa se noto
+      "streetAddress": "Via Dalmazia",
       "addressLocality": "Carbonia",
       "postalCode": "09013",
       "addressRegion": "SU",

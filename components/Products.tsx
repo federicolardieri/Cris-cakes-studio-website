@@ -78,7 +78,7 @@ export default function Products() {
                     viewport={{ once: true }}
                     transition={{ duration: 1.5, delay: 0.8 }}
                 >
-                    <a href="https://wa.me/393454168350" target="_blank" rel="noopener noreferrer" className="inline-block px-10 py-4 bg-gray-900 text-white uppercase tracking-widest text-sm font-medium hover:bg-[var(--color-cr-gold)] transition-all duration-500 shadow-md hover:shadow-xl hover:-translate-y-1 mb-4">
+                    <a href="https://wa.me/393484223249" target="_blank" rel="noopener noreferrer" className="inline-block px-10 py-4 bg-gray-900 text-white uppercase tracking-widest text-sm font-medium hover:bg-[var(--color-cr-gold)] transition-all duration-500 shadow-md hover:shadow-xl hover:-translate-y-1 mb-4">
                         Richiedi la tua Torta
                     </a>
                     <br />

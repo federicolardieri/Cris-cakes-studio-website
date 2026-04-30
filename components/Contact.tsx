@@ -1,7 +1,17 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Instagram, MapPin, Phone } from "lucide-react";
+import { MapPin, Phone } from "lucide-react";
+
+function InstagramIcon({ size = 20, className = "" }: { size?: number; className?: string }) {
+    return (
+        <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
+            <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+            <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+        </svg>
+    );
+}
 
 export default function Contact() {
     return (
@@ -25,28 +35,24 @@ export default function Contact() {
                     </div>
 
                     <div className="space-y-6 text-[#5a5a5a] font-light pt-4 border-t border-[var(--color-cr-background)] w-full md:w-3/4">
-                        <a href="https://wa.me/393454168350" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 hover:text-[var(--color-cr-gold)] transition-colors duration-500 group">
+                        <a href="https://wa.me/393484223249" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 hover:text-[var(--color-cr-gold)] transition-colors duration-500 group">
                             <Phone className="text-[var(--color-cr-gold-dark)] flex-shrink-0 group-hover:scale-110 transition-transform duration-500" size={20} />
-                            <span className="text-sm sm:text-base">345 416 8350 <span className="text-xs sm:text-sm text-gray-400 ml-1 sm:ml-2 group-hover:text-[var(--color-cr-gold)]/70 transition-colors">(WhatsApp)</span></span>
+                            <span className="text-sm sm:text-base">348 422 3249 <span className="text-xs sm:text-sm text-gray-400 ml-1 sm:ml-2 group-hover:text-[var(--color-cr-gold)]/70 transition-colors">(WhatsApp)</span></span>
                         </a>
-                        <a href="tel:+393454168350" className="flex items-center gap-4 p-4 border border-[var(--color-cr-gold)]/20 rounded-sm hover:bg-[var(--color-cr-gold)] hover:text-white hover:border-transparent transition-all duration-500 group">
+                        <a href="tel:+393484223249" className="flex items-center gap-4 p-4 border border-[var(--color-cr-gold)]/20 rounded-sm hover:bg-[var(--color-cr-gold)] hover:text-white hover:border-transparent transition-all duration-500 group">
                             <Phone className="text-[var(--color-cr-gold-dark)] flex-shrink-0 group-hover:scale-110 group-hover:text-white transition-all duration-500" size={20} />
                             <div className="flex flex-col">
                                 <span className="text-sm sm:text-base font-medium">Chiama Ora</span>
-                                <span className="text-xs sm:text-sm opacity-70">345 416 8350 (Cellulare)</span>
+                                <span className="text-xs sm:text-sm opacity-70">348 422 3249</span>
                             </div>
                         </a>
-                        <div className="flex items-center gap-4 px-4 py-2 hover:text-[var(--color-cr-gold)] transition-colors duration-500 group">
-                            <Phone className="text-[var(--color-cr-gold-dark)] flex-shrink-0 group-hover:scale-110 transition-transform duration-500" size={20} />
-                            <span className="text-sm sm:text-base">0781 64469 <span className="text-xs sm:text-sm text-gray-400 ml-1 sm:ml-2 transition-colors">(Fisso)</span></span>
-                        </div>
                         <a href="https://instagram.com/criscakesstudio" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 hover:text-[var(--color-cr-gold)] transition-colors duration-500 group">
-                            <Instagram className="text-[var(--color-cr-gold-dark)] flex-shrink-0 group-hover:scale-110 transition-transform duration-500" size={20} />
+                            <InstagramIcon className="text-[var(--color-cr-gold-dark)] flex-shrink-0 group-hover:scale-110 transition-transform duration-500" size={20} />
                             <span className="text-sm sm:text-base">@criscakesstudio</span>
                         </a>
                         <div className="flex items-center gap-4 hover:text-[var(--color-cr-gold)] transition-colors duration-500 group cursor-default">
                             <MapPin className="text-[var(--color-cr-gold-dark)] flex-shrink-0 group-hover:scale-110 transition-transform duration-500" size={20} />
-                            <span className="text-sm sm:text-base">Laboratorio Artigianale (Su Appuntamento)</span>
+                            <span className="text-sm sm:text-base">Via Dalmazia, 09013 Carbonia CI</span>
                         </div>
                     </div>
                 </motion.div>
@@ -64,7 +70,7 @@ export default function Contact() {
                             Richiedi subito un preventivo gratuito e personalizzato per la tua torta e assicurati la tua data.
                         </p>
                         <a
-                            href="https://wa.me/393454168350"
+                            href="https://wa.me/393484223249"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="inline-block w-full py-4 md:py-5 bg-[var(--color-cr-gold)] text-white uppercase tracking-widest text-sm font-medium hover:bg-[var(--color-cr-gold-dark)] transition-all duration-500 shadow-sm hover:shadow-lg"

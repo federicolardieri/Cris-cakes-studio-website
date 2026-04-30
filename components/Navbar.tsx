@@ -66,7 +66,7 @@ export default function Navbar() {
                 {/* Navigation Links - Right (Desktop) */}
                 <nav className="flex gap-6 md:gap-8 items-center text-sm font-medium tracking-widest uppercase ml-auto">
                     <Link href="/galleria" className="hidden md:block hover:text-[var(--color-cr-gold)] transition-colors">Galleria</Link>
-                    <a href="https://wa.me/393454168350" target="_blank" rel="noopener noreferrer" className="px-5 py-2.5 bg-[var(--color-cr-gold)] text-white hover:bg-[var(--color-cr-gold-dark)] transition-colors rounded-sm shadow-sm hover:shadow-md hidden sm:block">
+                    <a href="https://wa.me/393484223249" target="_blank" rel="noopener noreferrer" className="px-5 py-2.5 bg-[var(--color-cr-gold)] text-white hover:bg-[var(--color-cr-gold-dark)] transition-colors rounded-sm shadow-sm hover:shadow-md hidden sm:block">
                         Preventivo
                     </a>
                 </nav>
@@ -95,7 +95,7 @@ export default function Navbar() {
                             ))}
                             <div className="flex flex-col gap-4 w-full px-10 mt-4">
                                 <a
-                                    href="https://wa.me/393454168350"
+                                    href="https://wa.me/393484223249"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="w-full text-center px-6 py-4 bg-[var(--color-cr-gold)] text-white hover:bg-[var(--color-cr-gold-dark)] transition-colors rounded-sm shadow-md"
@@ -103,7 +103,7 @@ export default function Navbar() {
                                     Richiedi Preventivo
                                 </a>
                                 <a
-                                    href="tel:+393454168350"
+                                    href="tel:+393484223249"
                                     className="w-full text-center px-6 py-4 border border-[var(--color-cr-gold)] text-[var(--color-cr-gold-dark)] hover:bg-[var(--color-cr-gold)] hover:text-white transition-colors rounded-sm"
                                 >
                                     Chiama Ora
