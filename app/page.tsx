@@ -5,6 +5,7 @@ import About from "@/components/About";
 import Products from "@/components/Products";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
 import Footer from "@/components/Footer";
+import CateringTeaser from "@/components/CateringTeaser";
 
 // Caricamento dinamico delle sezioni pesanti o sotto la piega
 const Gallery = dynamic(() => import("@/components/Gallery"), { ssr: true });
@@ -22,6 +23,7 @@ export default function Home() {
       <Gallery />
       <WhyUs />
       <HowItWorks />
+      <CateringTeaser />
       <Contact />
       <FloatingWhatsApp />
       <Footer />

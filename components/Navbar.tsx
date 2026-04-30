@@ -24,6 +24,7 @@ export default function Navbar() {
     const navLinks = [
         { name: "Contattaci", href: "/#contatti" },
         { name: "Creazioni", href: "/#le-nostre-torte" },
+        { name: "Catering", href: "/catering" },
         { name: "Galleria", href: "/galleria" },
     ];
 
@@ -50,6 +51,7 @@ export default function Navbar() {
                 <nav className="hidden md:flex gap-8 text-sm font-medium tracking-widest uppercase">
                     <Link href="/#contatti" className="hover:text-[var(--color-cr-gold)] transition-colors">Contattaci</Link>
                     <Link href="/#le-nostre-torte" className="hover:text-[var(--color-cr-gold)] transition-colors">Creazioni</Link>
+                    <Link href="/catering" className="hover:text-[var(--color-cr-gold)] transition-colors">Catering</Link>
                 </nav>
 
                 {/* Logo - Center */}
