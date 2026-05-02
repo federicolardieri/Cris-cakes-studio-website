@@ -73,6 +73,75 @@ function VideoHero() {
     );
 }
 
+function GalleryCard({
+    image,
+    index,
+    isDesktop,
+    onClick,
+}: {
+    image: GalleryImage;
+    index: number;
+    isDesktop: boolean;
+    onClick: () => void;
+}) {
+    const cardRef = useRef<HTMLDivElement>(null);
+    const { scrollYProgress } = useScroll({
+        target: cardRef,
+        offset: ["start end", "end start"],
+    });
+    const yParallax = useTransform(scrollYProgress, [0, 1], ["6%", "-6%"]);
+
+    const isLeft = index % 2 === 0;
+
+    return (
+        <motion.div
+            ref={cardRef}
+            className={`relative overflow-hidden rounded-xl cursor-pointer aspect-[4/3] w-full md:w-[80%] mb-8 md:mb-14 ${
+                isLeft ? "mr-auto" : "ml-auto"
+            }`}
+            style={{
+                background:
+                    "linear-gradient(135deg, rgba(182,151,104,0.15) 0%, rgba(182,151,104,0.04) 100%)",
+                backdropFilter: "blur(16px)",
+                WebkitBackdropFilter: "blur(16px)",
+                border: "1.5px solid rgba(182,151,104,0.7)",
+                boxShadow:
+                    "0 0 30px rgba(182,151,104,0.18), 0 8px 32px rgba(0,0,0,0.45), inset 0 1px 0 rgba(182,151,104,0.25)",
+            }}
+            initial={{ opacity: 0, y: 40, filter: "blur(6px)" }}
+            whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+            whileHover={{
+                scale: 1.02,
+                boxShadow:
+                    "0 0 50px rgba(182,151,104,0.35), 0 16px 48px rgba(0,0,0,0.6), inset 0 1px 0 rgba(182,151,104,0.4)",
+                borderColor: "#B69768",
+                transition: { duration: 0.35, ease: [0.22, 1, 0.36, 1] },
+            }}
+            onClick={onClick}
+        >
+            {/* Riflesso diagonale glass */}
+            <div
+                className="absolute inset-0 z-10 pointer-events-none"
+                style={{
+                    background:
+                        "linear-gradient(135deg, rgba(255,255,255,0.07) 0%, transparent 50%)",
+                }}
+            />
+
+            {/* Immagine con parallax su desktop */}
+            <motion.img
+                src={image.src}
+                alt={image.alt}
+                className="absolute inset-0 w-full h-full object-cover"
+                style={isDesktop ? { y: yParallax } : undefined}
+                loading="lazy"
+            />
+        </motion.div>
+    );
+}
+
 export default function GalleriaClient({ images }: GalleriaClientProps) {
     const [selectedImage, setSelectedImage] = useState<string | null>(null);
     const isDesktop = useIsDesktop();
@@ -98,7 +167,15 @@ export default function GalleriaClient({ images }: GalleriaClientProps) {
                 <Navbar />
                 <VideoHero />
                 <section className="pt-16 pb-16 px-4 md:px-6 max-w-[1200px] mx-auto">
-                    <p className="text-center text-[var(--color-cr-gold)]">Card — Task 3</p>
+                    {cardImages.map((image, index) => (
+                        <GalleryCard
+                            key={image.src}
+                            image={image}
+                            index={index}
+                            isDesktop={isDesktop}
+                            onClick={() => setSelectedImage(image.src)}
+                        />
+                    ))}
                 </section>
                 <Footer />
                 <FloatingWhatsApp />
