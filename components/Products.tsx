@@ -11,12 +11,7 @@ const categories = [
     {
         title: "Compleanni & Cerimonie",
         description: "Torte scenografiche per rendere indimenticabile ogni traguardo importante.",
-        image: "/images/media__1771871540566.avif"
-    },
-    {
-        title: "Eventi Aziendali",
-        description: "Creazioni professionali ed eleganti per inaugurazioni e cene di gala.",
-        image: "/images/media__1771871540618.avif"
+        image: "/images/0ad99866-e0fd-4ca1-99f8-2a2430bbeb8a.JPG"
     },
     {
         title: "Sweet Tables",
@@ -43,7 +38,7 @@ export default function Products() {
                     </p>
                 </motion.div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                     {categories.map((category, index) => (
                         <motion.div
                             key={index}
