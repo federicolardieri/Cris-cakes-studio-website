@@ -27,6 +27,50 @@ function useIsDesktop(): boolean {
     return isDesktop;
 }
 
+function VideoHero() {
+    return (
+        <section className="relative w-full h-screen overflow-hidden">
+            {/* Video fullscreen */}
+            <video
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="absolute inset-0 w-full h-full object-cover"
+                src="/video-bg.mp4"
+            />
+
+            {/* Overlay gradiente dal basso */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+
+            {/* Contenuto centrato */}
+            <motion.div
+                className="absolute inset-0 flex flex-col items-center justify-center text-center px-4"
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1] }}
+            >
+                <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl text-[var(--color-cr-gold-dark)] mb-6">
+                    L&apos;Archivio delle Emozioni
+                </h1>
+                <div className="w-24 h-px bg-[var(--color-cr-gold)] opacity-60 mb-6" />
+                <p className="font-serif italic text-white/75 text-base sm:text-lg md:text-xl max-w-2xl">
+                    Una raccolta di tutte le nostre creazioni. Clicca su una foto per visualizzarla a schermo intero.
+                </p>
+            </motion.div>
+
+            {/* Scroll arrow con bounce */}
+            <motion.div
+                className="absolute bottom-8 left-0 right-0 flex justify-center"
+                animate={{ y: [0, 8, 0] }}
+                transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+            >
+                <ChevronDown size={32} className="text-[var(--color-cr-gold)] opacity-80" strokeWidth={1.5} />
+            </motion.div>
+        </section>
+    );
+}
+
 export default function GalleriaClient({ images }: GalleriaClientProps) {
     const [selectedImage, setSelectedImage] = useState<string | null>(null);
     const isDesktop = useIsDesktop();
@@ -50,7 +94,10 @@ export default function GalleriaClient({ images }: GalleriaClientProps) {
 
             <div className="relative z-10">
                 <Navbar />
-                <p className="text-center pt-40 text-[var(--color-cr-gold)]">Scaffold — Task 1 completo</p>
+                <VideoHero />
+                <section className="pt-16 pb-16 px-4 md:px-6 max-w-[1200px] mx-auto">
+                    <p className="text-center text-[var(--color-cr-gold)]">Card — Task 3</p>
+                </section>
                 <Footer />
                 <FloatingWhatsApp />
             </div>
