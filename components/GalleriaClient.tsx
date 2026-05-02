@@ -36,9 +36,11 @@ function VideoHero() {
                 loop
                 muted
                 playsInline
+                preload="none"
                 className="absolute inset-0 w-full h-full object-cover"
-                src="/video-bg.mp4"
-            />
+            >
+                <source src="/video-bg.mp4" type="video/mp4" />
+            </video>
 
             {/* Overlay gradiente dal basso */}
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
