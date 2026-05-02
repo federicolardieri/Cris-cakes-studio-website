@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     siteName: "Cris Cakes Cake Studio",
     images: [
       {
-        url: "/images/media__1771871540600.avif", // Immagine rappresentativa
+        url: "/images/66a8b2c1-51de-45fc-8739-e4c7d6dee6f6.JPG",
         width: 1200,
         height: 630,
         alt: "Torte artigianali Cris Cakes Carbonia",
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Torte Personalizzate Carbonia | Cris Cakes Cake Studio",
     description: "Torte artigianali e cake design per i tuoi eventi a Carbonia.",
-    images: ["/images/media__1771871540600.avif"],
+    images: ["/images/66a8b2c1-51de-45fc-8739-e4c7d6dee6f6.JPG"],
   },
   robots: "index, follow",
 };
@@ -53,7 +53,7 @@ export default function RootLayout({
     "@context": "https://schema.org",
     "@type": "Bakery",
     "name": "Cris Cakes Cake Studio",
-    "image": "https://criscakes.it/images/media__1771871540600.avif", // Update with absolute URL
+    "image": "https://criscakes.it/images/66a8b2c1-51de-45fc-8739-e4c7d6dee6f6.JPG",
     "@id": "https://criscakes.it",
     "url": "https://criscakes.it",
     "telephone": "+393484223249",
