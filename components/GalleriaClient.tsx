@@ -182,6 +182,54 @@ export default function GalleriaClient({ images }: GalleriaClientProps) {
                         />
                     ))}
                 </section>
+                <AnimatePresence>
+                    {selectedImage && (
+                        <motion.div
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            transition={{ duration: 0.4 }}
+                            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/95 p-4 md:p-12"
+                            onClick={() => setSelectedImage(null)}
+                        >
+                            <button
+                                className="absolute top-6 right-6 text-white/50 hover:text-white transition-colors duration-300 z-50 bg-white/10 p-3 rounded-full backdrop-blur-md"
+                                onClick={(e) => {
+                                    e.stopPropagation();
+                                    setSelectedImage(null);
+                                }}
+                                title="Chiudi galleria"
+                            >
+                                <X size={28} strokeWidth={1.5} />
+                            </button>
+
+                            <motion.div
+                                initial={{ scale: 0.95, opacity: 0 }}
+                                animate={{ scale: 1, opacity: 1 }}
+                                exit={{ scale: 0.95, opacity: 0 }}
+                                transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                                className="relative w-full max-w-6xl h-full max-h-[90vh] rounded-sm shadow-2xl flex items-center justify-center"
+                                onClick={(e) => e.stopPropagation()}
+                            >
+                                {selectedImage.endsWith(".mp4") ? (
+                                    <video
+                                        src={selectedImage}
+                                        autoPlay
+                                        controls
+                                        className="max-w-full max-h-full object-contain rounded-sm"
+                                    />
+                                ) : (
+                                    // eslint-disable-next-line @next/next/no-img-element
+                                    <img
+                                        src={selectedImage}
+                                        alt="Visualizzazione opera"
+                                        className="max-w-full max-h-full object-contain rounded-sm"
+                                    />
+                                )}
+                            </motion.div>
+                        </motion.div>
+                    )}
+                </AnimatePresence>
                 <Footer />
                 <FloatingWhatsApp />
             </div>
