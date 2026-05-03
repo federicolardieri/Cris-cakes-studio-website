@@ -104,7 +104,9 @@ function GalleryCard({
                     "linear-gradient(135deg, rgba(182,151,104,0.15) 0%, rgba(182,151,104,0.04) 100%)",
                 backdropFilter: "blur(16px)",
                 WebkitBackdropFilter: "blur(16px)",
-                border: "1.5px solid rgba(182,151,104,0.7)",
+                borderWidth: "1.5px",
+                borderStyle: "solid",
+                borderColor: "rgba(182,151,104,0.7)",
                 boxShadow:
                     "0 0 30px rgba(182,151,104,0.18), 0 8px 32px rgba(0,0,0,0.45), inset 0 1px 0 rgba(182,151,104,0.25)",
             }}
@@ -134,8 +136,11 @@ function GalleryCard({
             <motion.img
                 src={image.src}
                 alt={image.alt}
-                className="absolute inset-0 w-full h-full object-cover"
-                style={isDesktop ? { y: yParallax } : undefined}
+                className="absolute w-full object-cover"
+                style={isDesktop
+                    ? { y: yParallax, height: "112%", top: "-6%" }
+                    : { height: "100%", top: 0 }
+                }
                 loading="lazy"
             />
         </motion.div>
