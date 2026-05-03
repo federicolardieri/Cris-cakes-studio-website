@@ -132,7 +132,7 @@ function GalleryCard({
                 }}
             />
 
-            {/* Immagine con parallax su desktop */}
+            {/* next/image incompatibile con y-transform parallax — usato motion.img */}
             <motion.img
                 src={image.src}
                 alt={image.alt}
@@ -150,6 +150,20 @@ function GalleryCard({
 export default function GalleriaClient({ images }: GalleriaClientProps) {
     const [selectedImage, setSelectedImage] = useState<string | null>(null);
     const isDesktop = useIsDesktop();
+
+    useEffect(() => {
+        if (!selectedImage) return;
+        const handler = (e: KeyboardEvent) => {
+            if (e.key === "Escape") setSelectedImage(null);
+        };
+        window.addEventListener("keydown", handler);
+        return () => window.removeEventListener("keydown", handler);
+    }, [selectedImage]);
+
+    useEffect(() => {
+        document.body.style.overflow = selectedImage ? "hidden" : "";
+        return () => { document.body.style.overflow = ""; };
+    }, [selectedImage]);
 
     // images[0] è il video hero, images[1..] sono le card immagini
     const cardImages = images.slice(1);
@@ -190,10 +204,13 @@ export default function GalleriaClient({ images }: GalleriaClientProps) {
                             exit={{ opacity: 0 }}
                             transition={{ duration: 0.4 }}
                             className="fixed inset-0 z-[100] flex items-center justify-center bg-black/95 p-4 md:p-12"
+                            role="dialog"
+                            aria-modal="true"
+                            aria-label="Galleria immagine ingrandita"
                             onClick={() => setSelectedImage(null)}
                         >
                             <button
-                                className="absolute top-6 right-6 text-white/50 hover:text-white transition-colors duration-300 z-50 bg-white/10 p-3 rounded-full backdrop-blur-md"
+                                className="absolute top-6 right-6 text-white/50 hover:text-white transition-colors duration-300 bg-white/10 p-3 rounded-full backdrop-blur-md"
                                 onClick={(e) => {
                                     e.stopPropagation();
                                     setSelectedImage(null);
