@@ -1,8 +1,8 @@
 "use client";
 
-import { motion, AnimatePresence } from "framer-motion";
-import { useState } from "react";
-import { X } from "lucide-react";
+import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
+import { useRef, useState, useEffect } from "react";
+import { ChevronDown, X } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
@@ -16,239 +16,186 @@ interface GalleriaClientProps {
     images: GalleryImage[];
 }
 
-const HERO_INTERVAL = 7; // 1 hero + 6 grid per blocco
+function useIsDesktop(): boolean {
+    const [isDesktop, setIsDesktop] = useState(false);
+    useEffect(() => {
+        const check = () => setIsDesktop(window.innerWidth >= 768);
+        check();
+        window.addEventListener("resize", check);
+        return () => window.removeEventListener("resize", check);
+    }, []);
+    return isDesktop;
+}
 
-function HeroBlock({
-    image,
-    blockIdx,
-    onClick,
-}: {
-    image: GalleryImage;
-    blockIdx: number;
-    onClick: () => void;
-}) {
-    const isVideo = image.src.endsWith(".mp4");
-    const xEnd = blockIdx % 2 === 0 ? -20 : 20;
-
+function VideoHero() {
     return (
-        <motion.div
-            className="relative overflow-hidden w-full max-w-2xl mx-auto cursor-pointer group rounded-sm shadow-xl mb-3"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
-            onClick={onClick}
-        >
-            {isVideo ? (
-                <video
-                    src={image.src}
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                    className="w-full h-auto block"
-                />
-            ) : (
-                <motion.img
-                    src={image.src}
-                    alt={image.alt}
-                    className="w-full h-auto block"
-                    loading="lazy"
-                    animate={{ scale: [1, 1.04], x: [0, xEnd] }}
-                    transition={{
-                        duration: 10,
-                        repeat: Infinity,
-                        repeatType: "reverse",
-                        ease: "easeInOut",
-                    }}
-                />
-            )}
+        <section className="relative w-full h-screen overflow-hidden">
+            {/* Video fullscreen */}
+            <video
+                autoPlay
+                loop
+                muted
+                playsInline
+                preload="none"
+                className="absolute inset-0 w-full h-full object-cover"
+            >
+                <source src="/video-bg.mp4" type="video/mp4" />
+            </video>
 
-            {/* Gradient */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-transparent pointer-events-none" />
+            {/* Overlay gradiente dal basso */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
 
-            {/* Hover overlay */}
-            <div className="absolute inset-0 bg-black/0 group-hover:bg-black/25 transition-colors duration-500 flex items-center justify-center">
-                <span className="opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-500 text-white font-serif italic text-lg px-6 py-2 border border-white/50 bg-white/10 backdrop-blur-md rounded-full">
-                    + Ingrandisci
-                </span>
-            </div>
-
-            {/* Caption */}
-            <div className="absolute bottom-0 left-0 right-0 p-5 md:p-8 pointer-events-none">
-                <span className="inline-block text-[var(--color-cr-gold)] border border-[var(--color-cr-gold)]/60 text-[9px] md:text-[10px] tracking-[2.5px] uppercase font-sans px-3 py-1 rounded-full mb-2 md:mb-3">
-                    Creazione in Evidenza
-                </span>
-                <p className="text-white/75 font-serif italic text-xs md:text-sm leading-relaxed max-w-xl">
-                    {image.alt}
+            {/* Contenuto centrato */}
+            <motion.div
+                className="absolute inset-0 flex flex-col items-center justify-center text-center px-4"
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1] }}
+            >
+                <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl text-[var(--color-cr-gold-dark)] mb-6">
+                    L&apos;Archivio delle Emozioni
+                </h1>
+                <div className="w-24 h-px bg-[var(--color-cr-gold)] opacity-60 mb-6" />
+                <p className="font-serif italic text-white/75 text-base sm:text-lg md:text-xl max-w-2xl">
+                    Una raccolta di tutte le nostre creazioni. Clicca su una foto per visualizzarla a schermo intero.
                 </p>
-            </div>
-        </motion.div>
+            </motion.div>
+
+            {/* Scroll arrow con bounce */}
+            <motion.div
+                className="absolute bottom-8 left-0 right-0 flex justify-center"
+                animate={{ y: [0, 8, 0] }}
+                transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+            >
+                <ChevronDown size={32} className="text-[var(--color-cr-gold)] opacity-80" strokeWidth={1.5} />
+            </motion.div>
+        </section>
     );
 }
 
-function GridItem({
+function GalleryCard({
     image,
-    gridIdx,
+    index,
+    isDesktop,
     onClick,
 }: {
     image: GalleryImage;
-    gridIdx: number;
+    index: number;
+    isDesktop: boolean;
     onClick: () => void;
 }) {
-    const isVideo = image.src.endsWith(".mp4");
+    const cardRef = useRef<HTMLDivElement>(null);
+    const { scrollYProgress } = useScroll({
+        target: cardRef,
+        offset: ["start end", "end start"],
+    });
+    const yParallax = useTransform(scrollYProgress, [0, 1], ["6%", "-6%"]);
+
+    const isLeft = index % 2 === 0;
 
     return (
         <motion.div
-            className="relative overflow-hidden cursor-pointer group rounded-md aspect-[3/4]"
+            ref={cardRef}
+            className={`relative overflow-hidden rounded-xl cursor-pointer aspect-[4/3] w-full md:w-[80%] mb-8 md:mb-14 ${
+                isLeft ? "mr-auto" : "ml-auto"
+            }`}
             style={{
-                borderWidth: "1px",
+                background:
+                    "linear-gradient(135deg, rgba(182,151,104,0.15) 0%, rgba(182,151,104,0.04) 100%)",
+                backdropFilter: "blur(16px)",
+                WebkitBackdropFilter: "blur(16px)",
+                borderWidth: "1.5px",
                 borderStyle: "solid",
-                borderColor: "rgba(255,255,255,0.15)",
-                boxShadow: "0 4px 22px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,255,255,0.12)",
+                borderColor: "rgba(182,151,104,0.7)",
+                boxShadow:
+                    "0 0 30px rgba(182,151,104,0.18), 0 8px 32px rgba(0,0,0,0.45), inset 0 1px 0 rgba(182,151,104,0.25)",
             }}
-            initial={{ opacity: 0, y: 24, filter: "blur(4px)" }}
+            initial={{ opacity: 0, y: 40, filter: "blur(6px)" }}
             whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-            viewport={{ once: true, margin: "-60px" }}
-            transition={{
-                duration: 0.7,
-                delay: gridIdx * 0.07,
-                ease: [0.22, 1, 0.36, 1],
-            }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
             whileHover={{
-                y: -5,
-                borderColor: "rgba(182,151,104,0.55)",
-                boxShadow: "0 16px 48px rgba(0,0,0,0.6), 0 0 0 1px rgba(182,151,104,0.3), inset 0 1px 0 rgba(255,255,255,0.18)",
-                transition: { duration: 0.32, ease: [0.22, 1, 0.36, 1] },
+                scale: 1.02,
+                boxShadow:
+                    "0 0 50px rgba(182,151,104,0.35), 0 16px 48px rgba(0,0,0,0.6), inset 0 1px 0 rgba(182,151,104,0.4)",
+                borderColor: "#B69768",
+                transition: { duration: 0.35, ease: [0.22, 1, 0.36, 1] },
             }}
             onClick={onClick}
         >
-            {isVideo ? (
-                <video
-                    src={image.src}
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                    className="absolute inset-0 w-full h-full object-cover"
-                />
-            ) : (
-                <img
-                    src={image.src}
-                    alt={image.alt}
-                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-[8000ms] ease-out group-hover:scale-[1.07]"
-                    loading="lazy"
-                />
-            )}
-
             {/* Riflesso diagonale glass */}
             <div
-                className="absolute inset-0 pointer-events-none z-10"
-                style={{ background: "linear-gradient(135deg, rgba(255,255,255,0.07) 0%, transparent 55%)" }}
+                className="absolute inset-0 z-10 pointer-events-none"
+                style={{
+                    background:
+                        "linear-gradient(135deg, rgba(255,255,255,0.07) 0%, transparent 50%)",
+                }}
             />
 
-            {/* Hover overlay */}
-            <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-500 z-20 flex items-end justify-end p-3">
-                <span className="opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-500 text-white font-serif italic text-xs md:text-sm px-3 md:px-4 py-1.5 border border-[rgba(182,151,104,0.6)] bg-black/40 backdrop-blur-sm rounded-full">
-                    + Ingrandisci
-                </span>
-            </div>
+            {/* next/image incompatibile con y-transform parallax — usato motion.img */}
+            <motion.img
+                src={image.src}
+                alt={image.alt}
+                className="absolute w-full object-cover"
+                style={isDesktop
+                    ? { y: yParallax, height: "112%", top: "-6%" }
+                    : { height: "100%", top: 0 }
+                }
+                loading="lazy"
+            />
         </motion.div>
     );
 }
 
 export default function GalleriaClient({ images }: GalleriaClientProps) {
     const [selectedImage, setSelectedImage] = useState<string | null>(null);
+    const isDesktop = useIsDesktop();
 
-    const blocks = [];
-    for (let i = 0; i < images.length; i += HERO_INTERVAL) {
-        blocks.push({
-            hero: images[i],
-            grid: images.slice(i + 1, i + HERO_INTERVAL),
-        });
-    }
+    useEffect(() => {
+        if (!selectedImage) return;
+        const handler = (e: KeyboardEvent) => {
+            if (e.key === "Escape") setSelectedImage(null);
+        };
+        window.addEventListener("keydown", handler);
+        return () => window.removeEventListener("keydown", handler);
+    }, [selectedImage]);
+
+    useEffect(() => {
+        document.body.style.overflow = selectedImage ? "hidden" : "";
+        return () => { document.body.style.overflow = ""; };
+    }, [selectedImage]);
+
+    // images[0] è il video hero, images[1..] sono le card immagini
+    const cardImages = images.slice(1);
 
     return (
         <main className="relative min-h-screen bg-[var(--color-cr-background)] text-[var(--color-cr-text)] selection:bg-[var(--color-cr-gold)] selection:text-white overflow-x-hidden">
-            {/* Video Background */}
+            {/* Video Background fisso (invariato) */}
             <div className="fixed inset-0 z-0 w-full h-full pointer-events-none">
-                <video
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                    className="absolute inset-0 w-full h-full object-cover opacity-15"
-                >
+                <video autoPlay loop muted playsInline className="absolute inset-0 w-full h-full object-cover opacity-15">
                     <source src="/video-bg.mp4" type="video/mp4" />
                 </video>
                 <div className="absolute inset-0 bg-gradient-to-b from-[var(--color-cr-background)]/80 via-[var(--color-cr-background)]/50 to-[var(--color-cr-background)]" />
                 <div
                     className="absolute inset-0 opacity-30 mix-blend-multiply"
-                    style={{
-                        backgroundImage:
-                            "url('https://www.transparenttextures.com/patterns/cream-paper.png')",
-                    }}
+                    style={{ backgroundImage: "url('https://www.transparenttextures.com/patterns/cream-paper.png')" }}
                 />
             </div>
 
             <div className="relative z-10">
                 <Navbar />
-
-                <section className="pt-32 pb-16 md:pt-40 md:pb-20 px-4 md:px-6 max-w-[1200px] mx-auto min-h-[80vh]">
-                    {/* Titolo */}
-                    <motion.div
-                        className="text-center mb-12 md:mb-16"
-                        initial={{ opacity: 0, y: 30 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1] }}
-                    >
-                        <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl text-[var(--color-cr-gold-dark)] mb-6">
-                            L&apos;Archivio Delle Emozioni
-                        </h1>
-                        <div className="w-24 h-[1px] bg-[var(--color-cr-gold)] mx-auto mb-6 md:mb-8 opacity-60" />
-                        <p className="text-[#5a5a5a] font-serif text-base sm:text-lg md:text-xl max-w-3xl mx-auto italic px-2">
-                            Una raccolta completa di tutte le nostre creazioni passate. Clicca su una foto per
-                            visualizzarla a schermo intero e lasciati ispirare dai dettagli minuziosi di ognuna.
-                        </p>
-                    </motion.div>
-
-                    {/* Layout Editoriale */}
-                    <div className="flex flex-col">
-                        {blocks.map((block, blockIdx) => (
-                            <div key={blockIdx}>
-                                <HeroBlock
-                                    image={block.hero}
-                                    blockIdx={blockIdx}
-                                    onClick={() => setSelectedImage(block.hero.src)}
-                                />
-                                {block.grid.length > 0 && (
-                                    <div
-                                        className="relative rounded-md p-3 md:p-4 mb-10 md:mb-14 overflow-hidden"
-                                        style={{ background: "linear-gradient(135deg, #2a1f16, #1a1208)" }}
-                                    >
-                                        {/* Gold radial glow */}
-                                        <div
-                                            className="absolute inset-0 pointer-events-none"
-                                            style={{ background: "radial-gradient(circle at 30% 40%, rgba(182,151,104,0.08) 0%, transparent 65%)" }}
-                                        />
-                                        <div className="relative grid grid-cols-2 md:grid-cols-3 gap-3">
-                                            {block.grid.map((img, gridIdx) => (
-                                                <GridItem
-                                                    key={gridIdx}
-                                                    image={img}
-                                                    gridIdx={gridIdx}
-                                                    onClick={() => setSelectedImage(img.src)}
-                                                />
-                                            ))}
-                                        </div>
-                                    </div>
-                                )}
-                            </div>
-                        ))}
-                    </div>
+                <VideoHero />
+                <section className="pt-16 pb-16 px-4 md:px-6 max-w-[1200px] mx-auto">
+                    {cardImages.map((image, index) => (
+                        <GalleryCard
+                            key={image.src}
+                            image={image}
+                            index={index}
+                            isDesktop={isDesktop}
+                            onClick={() => setSelectedImage(image.src)}
+                        />
+                    ))}
                 </section>
-
-                {/* Lightbox */}
                 <AnimatePresence>
                     {selectedImage && (
                         <motion.div
@@ -257,10 +204,13 @@ export default function GalleriaClient({ images }: GalleriaClientProps) {
                             exit={{ opacity: 0 }}
                             transition={{ duration: 0.4 }}
                             className="fixed inset-0 z-[100] flex items-center justify-center bg-black/95 p-4 md:p-12"
+                            role="dialog"
+                            aria-modal="true"
+                            aria-label="Galleria immagine ingrandita"
                             onClick={() => setSelectedImage(null)}
                         >
                             <button
-                                className="absolute top-6 right-6 text-white/50 hover:text-white transition-colors duration-300 z-50 bg-white/10 p-3 rounded-full backdrop-blur-md"
+                                className="absolute top-6 right-6 text-white/50 hover:text-white transition-colors duration-300 bg-white/10 p-3 rounded-full backdrop-blur-md"
                                 onClick={(e) => {
                                     e.stopPropagation();
                                     setSelectedImage(null);
@@ -286,6 +236,7 @@ export default function GalleriaClient({ images }: GalleriaClientProps) {
                                         className="max-w-full max-h-full object-contain rounded-sm"
                                     />
                                 ) : (
+                                    // eslint-disable-next-line @next/next/no-img-element
                                     <img
                                         src={selectedImage}
                                         alt="Visualizzazione opera"
@@ -296,7 +247,6 @@ export default function GalleriaClient({ images }: GalleriaClientProps) {
                         </motion.div>
                     )}
                 </AnimatePresence>
-
                 <Footer />
                 <FloatingWhatsApp />
             </div>
