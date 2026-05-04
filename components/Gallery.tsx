@@ -191,16 +191,6 @@ export default function Gallery() {
                         className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 backdrop-blur-lg p-4 md:p-12"
                         onClick={() => setSelectedImage(null)}
                     >
-                        <button
-                            className="absolute top-6 right-6 text-white/70 hover:text-white transition-colors duration-300 z-50 bg-black/20 p-2 rounded-full backdrop-blur-md"
-                            onClick={(e) => {
-                                e.stopPropagation();
-                                setSelectedImage(null);
-                            }}
-                        >
-                            <X size={32} strokeWidth={1.5} />
-                        </button>
-
                         <motion.div
                             initial={{ scale: 0.95, opacity: 0 }}
                             animate={{ scale: 1, opacity: 1 }}
@@ -226,6 +216,16 @@ export default function Gallery() {
                                 />
                             )}
                         </motion.div>
+
+                        <button
+                            className="absolute top-6 right-6 text-white/70 hover:text-white transition-colors duration-300 bg-black/20 p-2 rounded-full backdrop-blur-md"
+                            onClick={(e) => {
+                                e.stopPropagation();
+                                setSelectedImage(null);
+                            }}
+                        >
+                            <X size={32} strokeWidth={1.5} />
+                        </button>
                     </motion.div>
                 )}
             </AnimatePresence>

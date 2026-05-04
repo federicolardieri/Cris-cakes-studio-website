@@ -209,17 +209,6 @@ export default function GalleriaClient({ images }: GalleriaClientProps) {
                             aria-label="Galleria immagine ingrandita"
                             onClick={() => setSelectedImage(null)}
                         >
-                            <button
-                                className="absolute top-6 right-6 z-10 text-white/50 hover:text-white transition-colors duration-300 bg-white/10 p-3 rounded-full backdrop-blur-md"
-                                onClick={(e) => {
-                                    e.stopPropagation();
-                                    setSelectedImage(null);
-                                }}
-                                title="Chiudi galleria"
-                            >
-                                <X size={28} strokeWidth={1.5} />
-                            </button>
-
                             <motion.div
                                 initial={{ scale: 0.95, opacity: 0 }}
                                 animate={{ scale: 1, opacity: 1 }}
@@ -244,6 +233,17 @@ export default function GalleriaClient({ images }: GalleriaClientProps) {
                                     />
                                 )}
                             </motion.div>
+
+                            <button
+                                className="absolute top-6 right-6 text-white/50 hover:text-white transition-colors duration-300 bg-white/10 p-3 rounded-full backdrop-blur-md"
+                                onClick={(e) => {
+                                    e.stopPropagation();
+                                    setSelectedImage(null);
+                                }}
+                                title="Chiudi galleria"
+                            >
+                                <X size={28} strokeWidth={1.5} />
+                            </button>
                         </motion.div>
                     )}
                 </AnimatePresence>
