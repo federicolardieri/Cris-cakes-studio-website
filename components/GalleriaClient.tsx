@@ -210,7 +210,7 @@ export default function GalleriaClient({ images }: GalleriaClientProps) {
                             onClick={() => setSelectedImage(null)}
                         >
                             <button
-                                className="absolute top-6 right-6 text-white/50 hover:text-white transition-colors duration-300 bg-white/10 p-3 rounded-full backdrop-blur-md"
+                                className="absolute top-6 right-6 z-10 text-white/50 hover:text-white transition-colors duration-300 bg-white/10 p-3 rounded-full backdrop-blur-md"
                                 onClick={(e) => {
                                     e.stopPropagation();
                                     setSelectedImage(null);
