@@ -22,6 +22,7 @@ const galleryImages = [
     { src: "/images/c900d545-71e1-4e56-bd79-9dbc52244ff7.JPG", alt: "Torta compleanno bianca e oro con rosa dorata premium Carbonia" },
     { src: "/images/cad67245-e7b9-4be4-ab2d-e1033fa91097.JPG", alt: "Torta 80° compleanno elegante con corona argento e decorazioni oro Carbonia" },
     { src: "/images/e8b61893-fbec-4c77-91f4-2cab0c07275c.JPG", alt: "Torta compleanno motivo leopardato con cuore dorato cake design Carbonia" },
+    { src: "/images/torta-nuova.JPG", alt: "Torta compleanno bianca e nera cake design Carbonia" },
 ];
 
 export default function Gallery() {
